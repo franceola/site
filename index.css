@@ -894,7 +894,7 @@ p {
 
 .header-container {
     position: relative;
-    max-width: 80vw; /* Ajuste la largeur maximale à 80% de la largeur de la fenêtre */
+    max-width: 100vw; /* Ajuste la largeur maximale à 80% de la largeur de la fenêtre */
 }
 
 .full-width-photo {
