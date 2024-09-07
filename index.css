@@ -118,13 +118,19 @@ body {
         flex-direction: column; /* Les éléments passent en colonne pour les petits écrans */
         align-items: center;
         gap: 2vh; /* Ajuste l'espace entre les colonnes lorsqu'elles sont en mode colonne */
-    }
-    .img-fluid {
-        width: 80vw; /* Ajuste la taille de l'image pour les petits écrans */
-        height: auto; /* Conserve le ratio de l'image */
-    }
+    }  
 }
-
+/* Effet de zoom sur mobile */
+@media (max-width: 768px) {
+    .img-fluid {
+      transition: transform 0.3s ease-in-out; /* Transition fluide pour l'effet de zoom */
+    }
+  
+    .img-fluid:hover,
+    .img-fluid:focus {
+      transform: scale(1.2); /* Zoom de 120% */
+    }
+  }
 .fo {
     margin-top: 0;
     margin-bottom: 2vh; /* Ajuste la marge du bas en fonction de la hauteur de la fenêtre */
@@ -132,7 +138,7 @@ body {
     font-weight: 600;
     line-height: 1.14;
     letter-spacing: .007vw; /* Ajuste l'espacement des lettres en fonction de la largeur de la fenêtre */
-    color: #767676;
+    color: white;
     text-align: left;
 }
 
@@ -140,15 +146,22 @@ body {
     white-space: normal; /* Permet au texte de s'enrouler */
     word-break: break-word; /* Casse les mots pour éviter les débordements */
     hyphens: auto; /* Ajoute automatiquement des tirets lorsque des mots sont coupés */
-    line-height: 1.3;
-    letter-spacing: 0.1vw; /* Ajuste l'espacement des lettres pour éviter que les lettres se touchent */
-    font-size: 2.4vw; /* Ajuste la taille de la police en fonction de la largeur de la fenêtre */
+    line-height: 1.5;
+    letter-spacing: 0.01vw; /* Ajuste l'espacement des lettres pour éviter que les lettres se touchent */
+    font-size: 2.2vw; /* Ajuste la taille de la police en fonction de la largeur de la fenêtre */
     text-align: left;
     display: block;
+    font-weight: 400;
+}
+@media (max-width: 768px){
+    .typography-site-body {
+    font-size: 3.5vw;
+    }
 }
 
+
 .typography-site-body strong {
-    color: #767676; /* Ou n'importe quelle autre couleur */
+    color: white; /* Ou n'importe quelle autre couleur */
 }
 
 .img-fluid {
@@ -577,7 +590,7 @@ body {
 .btn-lg, .btn {
     padding-left: 1vw; /* Ajuste le padding à gauche en fonction de la largeur de la fenêtre */
     padding-right: 1vw; /* Ajuste le padding à droite en fonction de la largeur de la fenêtre */
-    font-size: 2vw; /* Ajuste la taille de la police en fonction de la largeur de la fenêtre */
+    font-size: 3vw; /* Ajuste la taille de la police en fonction de la largeur de la fenêtre */
     font-weight: 600;
     line-height: 1.2;
     border-radius: 1vw; /* Ajuste le rayon de bordure en fonction de la largeur de la fenêtre */
@@ -677,13 +690,13 @@ a {
 
 .nav-item {
     padding: 0 2vw; /* Ajusté en fonction de la largeur de la fenêtre */
-    color: #54524f;
+    color: #767676;
     font-size: 2vw; /* Ajuste la taille de la police */
 }
 
 .nav-link {
     text-decoration: none;
-    color: var(--text-color);
+    color: white;
 }
 
 .nav-link.disabled {
@@ -852,7 +865,7 @@ h6 {
     letter-spacing: 0.007em;
     margin-top: 0vh; /* Marges ajustées en vh pour plus de fluidité */
     margin-bottom: 0vh;
-    color: #c9c8c3;
+    color: white;
 }
 
 h4 {
@@ -984,7 +997,7 @@ p {
     top: 1.3vh; /* Positionnement en fonction de la hauteur de la fenêtre */
     left: 6vw; /* Positionnement en fonction de la largeur de la fenêtre */
     transform: translate(0);
-    color: var(--text-color); /* Ajuster selon vos besoins */
+    color: white; /* Ajuster selon vos besoins */
     margin: 0;
     margin-bottom: 1vh; /* Ajusté avec vh pour la marge en bas */
     padding: 0;
@@ -1004,7 +1017,7 @@ p {
     line-height: 0.9;
     font-weight: 600;
     letter-spacing: 0.007em;
-    color: #54524f;
+    color: #767676;
 }
 
 /* Carouselle section dark */
@@ -1025,22 +1038,33 @@ p {
 }
 
 .text-area h2 {
-    font-size: 3vw; /* Ajusté à 6% de la largeur de la fenêtre pour le titre */
-    line-height: 1.14;
+    font-size: 2.2vw; /* Ajusté à 6% de la largeur de la fenêtre pour le titre */
+    line-height: 1.5;
     font-weight: 600;
     letter-spacing: 0.007em;
-    color: #c9c8c3;
+    color: white;
+}
+@media (max-width: 768px) {
+    .text-area h2 {
+        font-size: 3.5vw;
+
+    }
 }
 
 .text-area p {
-    font-size: 3vw; /* Ajusté à 4% de la largeur de la fenêtre pour le paragraphe */
-    line-height: 1.14;
+    font-size: 2.2vw; /* Ajusté à 4% de la largeur de la fenêtre pour le paragraphe */
+    line-height: 1.5;
     font-weight: 600;
     letter-spacing: 0.007em;
     color: #CEA4A0;
     margin-top: 1vw;
 }
+@media (max-width: 768px) {
+    .text-area p {
+        font-size: 3.8vw;
 
+    }
+}
 @media (min-width: 280px) {
     .slider-container {
         display: flex;
@@ -1404,7 +1428,7 @@ body {
     font-size: 150px;
     margin-bottom: -150%;
     
-    color: #c9c8c3;
+    color: #CEA4A0;
     
 }
 /* The Close Button */
