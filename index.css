@@ -49,7 +49,7 @@ body {
 .container {
     width: 80vw; /* Occupe toute la largeur de la fenêtre */
     max-width: 100%;
-    padding: 10px; /* Padding ajusté à 5% de la largeur de la fenêtre */
+    padding: 20px; /* Padding ajusté à 5% de la largeur de la fenêtre */
     margin: 2vh auto;
     background-color: #101010;
     border-radius: var(--hlts-glry-radius); /* Conserve la bordure arrondie */
@@ -104,11 +104,9 @@ body {
 .row {
     display: flex;
     flex-wrap: nowrap;
-    flex-direction: row; 
     justify-content: space-between; /* Espace les éléments */
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 1vh; /* Ajuste la marge du haut en fonction de la hauteur de la fenêtre */
+    align-items: center;
+    margin-top: 2vh; /* Ajuste la marge du haut en fonction de la hauteur de la fenêtre */
     gap: 3vw; /* Ajuste l'écart entre les colonnes en fonction de la largeur de la fenêtre */
     row-gap: 1.5vh; /* Ajuste l'écart entre les lignes en fonction de la hauteur de la fenêtre */
 }
@@ -120,20 +118,22 @@ body {
         gap: 2vh; /* Ajuste l'espace entre les colonnes lorsqu'elles sont en mode colonne */
     }  
 }
-/* Effet de zoom sur mobile */
-@media (max-width: 768px) {
-    .img-fluid {
-      transition: transform 0.3s ease-in-out; /* Transition fluide pour l'effet de zoom */
-    }
-  
-    .img-fluid:hover,
-    .img-fluid:focus {
-      transform: scale(1.2); /* Zoom de 120% */
-    }
-  }
+.img-container {
+    position: relative;
+    overflow: hidden; /* Empêche l'image de sortir du conteneur */
+    height: auto;
+    width: 100%;
+    flex: 0 1 48%;
+}
+
+.img-fluid {
+    transition: transform 0.3s ease-in-out; /* Animation fluide pour le zoom */
+    width: 100%;
+    height: auto;
+   transform-origin: bottom left;
+}
+
 .fo {
-    margin-top: 0;
-    margin-bottom: 2vh; /* Ajuste la marge du bas en fonction de la hauteur de la fenêtre */
     font-size: 3.5vw; /* Ajuste la taille de la police en fonction de la largeur de la fenêtre */
     font-weight: 600;
     line-height: 1.14;
@@ -148,7 +148,7 @@ body {
     hyphens: auto; /* Ajoute automatiquement des tirets lorsque des mots sont coupés */
     line-height: 1.5;
     letter-spacing: 0.01vw; /* Ajuste l'espacement des lettres pour éviter que les lettres se touchent */
-    font-size: 2.2vw; /* Ajuste la taille de la police en fonction de la largeur de la fenêtre */
+    font-size: 2vw; /* Ajuste la taille de la police en fonction de la largeur de la fenêtre */
     text-align: left;
     display: block;
     font-weight: 400;
@@ -166,7 +166,6 @@ body {
 
 .img-fluid {
     height: auto;
-    border-radius: var(--hlts-glry-radius);
     width: 30vw; /* Ajuste la largeur de l'image en fonction de la largeur de la fenêtre */
 }
 
@@ -563,15 +562,7 @@ body {
    
 } 
 .col-lg-6 {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    align-content: space-between;
-    
-   
-    justify-content: center;
+   flex: 0 1 48%;
     
 }
 
