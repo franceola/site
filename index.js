@@ -150,3 +150,56 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add your existing modal close logic here
 });
+
+
+// Variables pour gérer le zoom et le défilement
+let zooming = false; // Pour savoir si le zoom est en cours
+let scrollBlocked = false; // Pour savoir si le défilement est bloqué
+
+// Fonction pour commencer le zoom
+function startZooming(image) {
+    const maxZoom = 1.5; // Valeur maximale du zoom
+    let zoomLevel = 1; // Niveau de zoom de départ
+
+    zooming = true; // Indiquer que le zoom est en cours
+    scrollBlocked = true; // Bloquer le défilement
+
+    // Fonction pour augmenter progressivement le zoom
+    const zoomInterval = setInterval(() => {
+        if (zoomLevel < maxZoom) {
+            zoomLevel += 0.02; // Augmenter le niveau de zoom progressivement
+            image.style.transform = `scale(${zoomLevel})`;
+        } else {
+            clearInterval(zoomInterval); // Arrêter le zoom quand le maximum est atteint
+            zooming = false; // Le zoom est terminé
+            scrollBlocked = false; // Autoriser le défilement à nouveau
+        }
+    }, 100); // Ajustez la vitesse du zoom
+}
+
+// Fonction pour gérer le défilement
+function handleScroll(event) {
+    if (scrollBlocked) {
+        event.preventDefault(); // Empêcher le défilement tant que le zoom n'est pas terminé
+    }
+}
+
+// Ajout d'un écouteur pour empêcher le défilement
+window.addEventListener('wheel', handleScroll, { passive: false });
+
+// Utilisation de l'Intersection Observer pour détecter quand l'image entre dans le viewport
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && !zooming) {
+            const image = entry.target;
+            startZooming(image); // Démarrer le zoom lorsque l'image est visible
+        }
+    });
+}, { threshold: 1 }); // Déclenchement à 50% de visibilité
+
+// Ciblez l'image pour l'observation
+const img = document.querySelector('.img-fluid');
+observer.observe(img);
+
+
+
