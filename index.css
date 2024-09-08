@@ -97,7 +97,12 @@ body {
         margin-bottom: 3vh; /* Ajuste la marge en bas à 5% de la hauteur de la fenêtre */
         margin-top: 1.5vh; /* Ajuste la marge en haut à 2% de la hauteur de la fenêtre */
     }
-    
+    @media (max-width: 768px) {
+        .text-center {
+            margin-bottom: 0vh;
+            margin-top: 0vh;
+        }  
+    }
 
  
 /* --- row description*/
@@ -172,233 +177,72 @@ body {
 
 
 
-.row4 {
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: rows;
-    
-    margin-top: 1.5rem;
-    
-   
-    gap: 100px;
-    row-gap: 20px;
-   
-  }  
-.latest-work {
-    font-size: 25px;
-    line-height: 1.2;
-    letter-spacing: 0.01;
-    font-weight: 600;
-    width: 500px;
-}
-.text-left {
-    font-size: 15px;
-    margin-top: 15px;
-}
-@media (min-width: 280px){
-    .text-left {
-    font-size: 15px;
-    line-height: 1.2;
-    letter-spacing: 0.01;
-
-}
-}
-@media (min-width: 375px){
-    .text-left {
-    font-size: 18px;
-    line-height: 1.2;
-    letter-spacing: 0.01;
-
-}
-}
-@media (min-width: 768px){
-    .text-left {
-    font-size: 22px;
-    line-height: 1.2;
-    letter-spacing: 0.01;
-
-}
-}
-@media (min-width: 992px){
-    .text-left {
-    font-size: 35px;
-}
-}
+/* Conteneur flex pour aligner les colonnes et images */
 .container7 {
     display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
     justify-content: center;
+    align-items: center;
 }
-  .modal-image{
+
+/* Ligne flex pour assurer des colonnes égales */
+.row4 {
     display: flex;
-    flex-wrap: nowrap;
-    
-    height: 500px;
+    flex-wrap: wrap; /* Permet aux colonnes de s'enrouler sur petits écrans */
+    justify-content: space-between;
+    gap: 2vw; /* Ajuste l'espace entre les colonnes */
+}
+
+/* Colonnes avec alignement vertical */
+.col-md-6 {
+    flex: 1; /* Assure que les deux colonnes prennent une largeur égale */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #101010; /* Si nécessaire, ajoute un fond pour les colonnes */
     border-radius: var(--hlts-glry-radius);
-    width: 500px;
-  
-
+    padding: 1vw; /* Ajoute un peu d'espace autour du contenu */
 }
 
-@media (min-width: 280px){
-    .modal-image {
-       width: 250px;
-
-    }
+/* Image dans les colonnes */
+.modal-image {
+    width: 100%; /* L'image occupe toute la largeur de la colonne */
+    height: 35vh; /* Ajustement pour la hauteur de l'image */
+    object-fit: cover; /* Assure que l'image couvre bien son conteneur sans déformation */
+    border-radius: var(--hlts-glry-radius);
 }
-@media (min-width: 280px){
+
+/* Titre et texte pour chaque section */
+.title-LW {
+    font-size: 1.8vw; /* Taille du titre ajustée en fonction de la largeur de l'écran */
+    color: #CEA4A0;
+    margin-top: 1vh;
+}
+
+.text-LW {
+    font-size: 1.2vw; /* Taille du texte ajustée en fonction de la largeur de l'écran */
+    color: #c9c8c3;
+    margin-top: 0.5vh;
+}
+
+/* Media query pour les petits écrans */
+@media (max-width: 768px) {
     .row4 {
-       
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 0px;
-        margin-bottom: 5px;
+        flex-direction: column; /* Les colonnes passent en vertical sur petits écrans */
+        gap: 2vh; /* Espacement ajusté pour les petits écrans */
     }
-}
-@media (min-width: 280px){
-    .latest-work {
-        font-size: 60%;
-        width: 250px;
-        line-height: 1.35;
-        letter-spacing: 0.02;
-        font-weight: 600;
-        
-    }
-}
-@media (min-width: 375px){
+
     .modal-image {
-       width: 300px;
+        height: 30vh; /* Réduit la taille des images pour les petits écrans */
     }
-}
-@media (min-width: 375px){
-    .row4 {
-       display: flex;
-       flex-wrap: wrap;
-       flex-direction: column;
-      align-items: center;
-    }
-}
-@media (min-width: 375px){
-    .latest-work {
-        font-size: 60%;
-        width: 300px;
-    }
-}
 
-@media (min-width: 576px){
-    .modal-image {
-        width: 500px;
+    .title-LW {
+        font-size: 5vw; /* Taille plus grande pour les petits écrans */
     }
-}
-@media (min-width: 576px){
-    .row4 {
-       
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: column;
-      align-items: center;
-    }
-}
-@media (min-width: 576px){
-    .latest-work {
-        font-size: 60%;
-        width: 500px;
-    }
-}
 
-@media (min-width: 768px){
-    .modal-image {
-        width: 250px;
+    .text-LW {
+        font-size: 4vw; /* Ajuste la taille du texte pour les petits écrans */
     }
 }
-@media (min-width: 768px){
-    .row4 {
-        display: flex;
-        flex-wrap: nowrap;
-        flex-direction: row;
-        align-items: flex-start;
-        gap: 70px;
-    row-gap: 20px;
-
-    }
-}
-@media (min-width: 768px){
-    .latest-work {
-        font-size: 20px;
-        width: 250px;
-    }
-}
-
-@media (min-width: 992px){
-    .modal-image {
-        width: 400px;
-    }
-}
-@media (min-width: 992px){
-    .row4 {
-        display: flex;
-        flex-wrap: nowrap;
-        flex-direction: row;
-        align-items: flex-start;
-    }
-}
-@media (min-width: 992px){
-    .latest-work {
-        font-size: 25px;
-        width: 400px;
-    }
-}
-
-@media (min-width: 1280px){
-    .modal-image {
-        width: 450px;
-        height: 450px;
-        
-    }
-}
-@media (min-width: 1280px){
-    .row4 {
-        display: flex;
-        flex-wrap: nowrap;
-        flex-direction: row;
-        align-items: flex-start;
-        justify-items: center;
-        align-content: normal;
-    }
-}
-@media (min-width: 1280px){
-    .latest-work {
-        font-size: 28px;
-        width: 450px;
-    }
-}
-@media (min-width: 1441px){
-    .modal-image {
-       width: 400px;
-       
-    }
-}
-@media (min-width: 1441px){
-    .row4 {
-        display: flex;
-        flex-wrap: nowrap;
-        flex-direction: row;
-        align-items: flex-start;
-        justify-items: center;
-        align-content: normal;
-    }
-}
-@media (min-width: 1441px){
-    .latest-work {
-        font-size: 30px;
-        width: 400px;
-    }
-}
-
-
 
  .row3 {
     display: flex;
@@ -414,39 +258,7 @@ body {
    
   } 
 
- 
 
-
-
-@media (min-width: 280px){
-    .row3 {
-       
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 20px;
-    }
-}
-
-@media (min-width: 375px){
-    .row3 {
-       display: flex;
-       flex-wrap: wrap;
-       flex-direction: column;
-      align-items: center;
-    }
-}
-
-@media (min-width: 576px){
-    .row3 {
-       
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: column;
-      align-items: center;
-    }
-}
 @media (min-width: 768px){
     .row3 {
         display: flex;
@@ -455,103 +267,56 @@ body {
     }
 }
 
-@media (min-width: 992px){
-    .row3 {
-        display: flex;
-        flex-wrap: nowrap;
-        flex-direction: row;
-      
+
+
+  
+.title-LW {
+    font-size: 2.5vw; /* Correspond à environ 25px sur un écran large */
+    font-weight: 600;
+    font-family: var(--font-stack);
+    margin-left: 0vh;
+    margin-top: 2vh; /* Ajusté pour une meilleure adaptation en fonction de la hauteur de l'écran */
+    margin-bottom: 2vh; /* Marges ajustées pour être basées sur la hauteur de la fenêtre */
+    text-align: left;
+    line-height: 1.2; /* Ajusté pour une meilleure lisibilité */
+    letter-spacing: 0.1vw; /* Ajusté en fonction de la largeur de l'écran */
+    color: #CEA4A0;
+}
+@media (max-width: 768px) {
+    .title-LW {
+        font-size: 5vw; /* Texte plus grand sur les petits écrans pour une meilleure lisibilité */
+        margin-top: 2vh; /* Augmentation de l'espace supérieur pour un meilleur espacement */
+        margin-bottom: 2vh; /* Espace inférieur augmenté pour une meilleure séparation */
+        line-height: 1.4; /* Hauteur de ligne augmentée pour un meilleur espacement du texte */
+        letter-spacing: 0.2vw; /* Espacement entre les lettres légèrement augmenté pour une meilleure lisibilité */
     }
 }
 
-@media (min-width: 1280px){
-    .row3 {
-        display: flex;
-        flex-wrap: nowrap;
-        flex-direction: row;
 
+.text-LW {
+    font-size: 1.8vw; /* Environ équivalent à 20px sur un écran large */
+    font-weight: 400;
+    font-family: var(--font-stack);
+    text-align: left;
+    margin-top: 2vh; /* Ajusté en fonction de la hauteur de la fenêtre */
+    margin-left: 0vh;
+    margin-right: 2vh;
+    letter-spacing: 0.03vw; /* Ajusté en fonction de la largeur de la fenêtre */
+    line-height: 1.4; /* Légèrement augmenté pour la lisibilité */
+    color: white;
+}
+@media (max-width: 768px) {
+    .text-LW {
+        font-size: 4vw; /* Taille plus grande sur les petits écrans pour la lisibilité */
+        margin-top: 2vh; /* Augmentation de l'espace supérieur pour une meilleure respiration */
+        letter-spacing: 0.05vw; /* Espacement légèrement augmenté pour améliorer la lisibilité */
+        line-height: 1.4; /* Augmenté pour rendre le texte plus espacé sur les petits écrans */
+        color: #fff;
     }
 }
 
-@media (min-width: 1441px){
-    .row3 {
-        display: flex;
-        flex-wrap: nowrap;
-        flex-direction: row;
-        margin-left: 10%;
-        margin-right: 10%;
-    
-    }
-}
 
-  .row5 {
-    display: flex;
-    flex-wrap: nowrap;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 1.5rem;
-    justify-content: center;
 
-   
-    gap: 60px;
-    
-   
-  }  
-
- @media (min-width: 280px){
-    .row5 {
-       
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 30px;
-    }
-} 
-@media (min-width: 768px){
-    .row5 {
-       
-        display: flex;
-        flex-wrap: nowrap;
-        flex-direction: row;
-        align-items: center;
-        margin-bottom: 10px;
-    }
-} 
-
-.row6 {
-    display: flex;
-    flex-wrap: nowrap;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 1.5rem;
-    justify-content: center;
-   
-    gap: 60px;
-    
-   
-  }  
-  @media (min-width: 280px){
-    .row6 {
-       
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 30px;
-    }
-} 
-@media (min-width: 768px){
-    .row6 {
-       
-        display: flex;
-        flex-wrap: nowrap;
-        flex-direction: row;
-        align-items: center;
-        margin-bottom: 30px;
-       
-    }
-} 
 .col-1 {
    
    
@@ -667,6 +432,7 @@ a {
     margin-top: 0;
 }
 
+
 /* Navbar navigation */
 .navbar-nav {
     display: block;
@@ -684,7 +450,11 @@ a {
     color: #767676;
     font-size: 2vw; /* Ajuste la taille de la police */
 }
-
+@media (max-width: 768px) {
+    .nav-item {  
+       font-size: 2.8vw;
+    }
+}
 .nav-link {
     text-decoration: none;
     color: white;
@@ -794,7 +564,12 @@ a {
     width: 25vw;
     height: auto;
 }
-
+@media (max-width: 768px) {
+    .navbar-logo {  
+        height: auto;
+        width: 35vw; /* Ajusté pour être responsive */
+    }
+}
 .navbar-brand {
     margin-left: 2vw;
 }
@@ -860,8 +635,8 @@ h6 {
 }
 
 h4 {
-    margin-top: 5vh; /* Marges en haut et en bas ajustées à la hauteur de la fenêtre */
-    margin-bottom: 5vh;
+    margin-top: 2vh; /* Marges en haut et en bas ajustées à la hauteur de la fenêtre */
+    margin-bottom: 2vh;
     font-size: 3vw; /* Ajuste la taille de la police à 3% de la largeur de la fenêtre */
     font-weight: 600;
     line-height: 1.14;
@@ -951,6 +726,17 @@ p {
     display: block; /* Supprime les espaces blancs potentiels autour de l'image */
     max-height: 100vh; /* Limite la hauteur maximale à 100% de la hauteur de la fenêtre */
 }
+@media (max-width: 768px) {
+    .full-width-photo {
+        width: 100%; /* L'image occupe toute la largeur disponible */
+        height: auto; /* Conserve le ratio d'aspect de l'image */
+        max-height: 70vh; /* Limite la hauteur à 70% de la hauteur de la fenêtre */
+        display: block;
+        object-fit: cover; /* Assure que l'image couvre bien le conteneur sans déformation */
+        margin: 0 auto; /* Centre l'image s'il y a de la marge */
+    }
+}
+
 
 .content-section {
     display: flex;
@@ -1267,90 +1053,26 @@ body {
 /* The Modal (background) */
 
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 2; /* Sit on top */
+    display: none; /* Masqué par défaut */
+    position: fixed; /* Resté en place même pendant le scroll */
+    z-index: 2; /* Assuré que la modale soit au-dessus du reste */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    width: 100vw; /* Prend toute la largeur de la fenêtre */
+    height: 100vh; /* Prend toute la hauteur de la fenêtre */
+    overflow: auto; /* Active le scroll si nécessaire */
     
-   border-color: #212121;
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    backdrop-filter: blur(5px); /* Blur effect for the background */
-    -webkit-backdrop-filter: blur(5px); /* For Safari */
-}
-@media (min-width: 280px){
-    .modal {
-        display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 2; /* Sit on top */
-   
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    
-   border-color: #212121;
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    backdrop-filter: blur(5px); /* Blur effect for the background */
-    -webkit-backdrop-filter: blur(5px); /* For Safari */
-    }
+    border-color: #212121;
+    background-color: rgba(0, 0, 0, 0.4); /* Fond noir avec opacité */
+    backdrop-filter: blur(5px); /* Effet de flou sur le fond */
+    -webkit-backdrop-filter: blur(5px); /* Effet de flou pour Safari */
 }
 
-
-@media (min-width: 375px){
+@media (max-width: 768px) {
     .modal {
-        display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 2; /* Sit on top */
-   
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    
-   border-color: #212121;
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    backdrop-filter: blur(5px); /* Blur effect for the background */
-    -webkit-backdrop-filter: blur(5px); /* For Safari */
-    }
-}
-
-@media (min-width: 576px){
-    .modal {
-        display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 2; /* Sit on top */
-   
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    
-   border-color: #212121;
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    backdrop-filter: blur(5px); /* Blur effect for the background */
-    -webkit-backdrop-filter: blur(5px); /* For Safari */
-    }
-}
-
-@media (min-width: 768px){
-    .modal {
-        display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 2; /* Sit on top */
-   
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    
-   border-color: #212121;
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    backdrop-filter: blur(5px); /* Blur effect for the background */
-    -webkit-backdrop-filter: blur(5px); /* For Safari */
+        backdrop-filter: blur(3px); /* Réduit légèrement le flou sur les petits écrans */
+        -webkit-backdrop-filter: blur(3px); /* Pour Safari */
+        padding: 2vh 2vw; /* Ajoute du padding pour donner de l'espace au contenu sur les petits écrans */
     }
 }
 
@@ -1533,275 +1255,125 @@ body {
         -webkit-backdrop-filter: blur(5px); /* For Safari */
     }      
     
-.modal-content2 {
-    position: relative;
-    z-index: 3;
-    background-color: #212121;
-    margin: 5% auto; /* 15% from the top and centered */
+
+    .modal-content2 {
+        position: relative;
+        z-index: 3;
+        background-color: #212121;
+        margin: 5vh auto; /* 5% de la hauteur de l'écran pour l'espacement vertical */
+        
+        padding: 2vh 2vw; /* Padding ajusté pour s'adapter à l'écran */
+        border: 1px solid #212121;
+        width: 80vw; /* Largeur définie en fonction de la largeur de la fenêtre */
+        max-height: 90vh; /* Hauteur maximale définie en fonction de la hauteur de la fenêtre */
+        overflow: auto; /* Active le défilement si nécessaire */
+        border-radius: 3vw; /* Border-radius en fonction de la largeur de l'écran */
+    }
     
-    padding: 20px;
-    border: 1px solid #212121;
-    width: 80%; /* Could be more or less, depending on screen size */
-    max-height: 90vh;
-    overflow: auto; /* Enable scroll if needed */
-    border-radius: 30px;
-}
-
-@media (min-width: 280px){
-    .modal-content2 {
-        margin: 10%;
-        padding: 0%;
+    @media (max-width: 768px) {
+        .modal-content2 {
+            width: 90vw; /* Largeur augmentée pour occuper presque toute la fenêtre */
+            max-height: 80vh; /* Hauteur réduite pour mieux s'adapter aux petits écrans */
+            padding: 4vh 4vw; /* Plus de padding pour donner de l'espace sur les petits écrans */
+            border-radius: 5vw; /* Des coins plus arrondis pour les petits écrans */
+        }
     }
-}
-
-@media (min-width: 375px){
-    .modal-content2 {
-        margin: 10%;
-        padding: 0%;
-    }
-}
-
-@media (min-width: 576px){
-    .modal-content2 {
-        margin: 10%;
-        padding: 0%;
-    }
-}
-
-@media (min-width: 768px){
-    .modal-content2 {
-        margin: 10%;
-        padding: 0%;
-    }
-}
+    
 .modal-content3 {
     position: relative;
     z-index: 3;
     background-color: #212121;
-    margin: 5% auto; /* 15% from the top and centered */
+    margin: 5vh auto; /* 5% de la hauteur de l'écran pour l'espacement vertical */
     
-    padding: 10px;
+    padding: 2vh 2vw; /* Padding ajusté pour s'adapter à l'écran */
     border: 1px solid #212121;
-    width: 80%; /* Could be more or less, depending on screen size */
-    max-height: 90vh;
-    overflow: auto; /* Enable scroll if needed */
-    border-radius: 30px;
-}
-
-@media (min-width: 280px){
-    .modal-content3 {
-        margin: 10%;
-        padding: 0%;
-    }
+    width: 80vw; /* Largeur définie en fonction de la largeur de la fenêtre */
+    max-height: 90vh; /* Hauteur maximale définie en fonction de la hauteur de la fenêtre */
+    overflow: auto; /* Active le défilement si nécessaire */
+    border-radius: 3vw; /* Border-radius en fonction de la largeur de l'écran */
 }
 
 
-@media (min-width: 375px){
-    .modal-content3 {
-        margin: 10%;
-        padding: 0%;
-    }
-}
 
-
-@media (min-width: 576px){
+@media (max-width: 768px){
     .modal-content3 {
-        margin: 10%;
-        padding: 0%;
-    }
-}
-
-@media (min-width: 768px){
-    .modal-content3 {
-        margin: 10%;
-        padding: 0%;
+        width: 90vw; /* Largeur augmentée pour occuper presque toute la fenêtre */
+        max-height: 80vh; /* Hauteur réduite pour mieux s'adapter aux petits écrans */
+        padding: 4vh 4vw; /* Plus de padding pour donner de l'espace sur les petits écrans */
+        border-radius: 5vw; /* Des coins plus arrondis pour les petits écrans */
     }
 }
 .modal-content4 {
     position: relative;
     z-index: 3;
     background-color: #212121;
-    margin: 5% auto; /* 15% from the top and centered */
-    margin-bottom: 120px;
-    padding: 10px;
+    margin: 5vh auto; /* 5% de la hauteur de l'écran pour l'espacement vertical */
+    
+    padding: 2vh 2vw; /* Padding ajusté pour s'adapter à l'écran */
     border: 1px solid #212121;
-    width: 80%; /* Could be more or less, depending on screen size */
-    max-height: 90vh;
-    overflow: auto; /* Enable scroll if needed */
-    border-radius: 30px;
-}
-
-@media (min-width: 280px){
-    .modal-content4 {
-        margin: 10%;
-        padding: 0%;
-    }
+    width: 80vw; /* Largeur définie en fonction de la largeur de la fenêtre */
+    max-height: 90vh; /* Hauteur maximale définie en fonction de la hauteur de la fenêtre */
+    overflow: auto; /* Active le défilement si nécessaire */
+    border-radius: 3vw; /* Border-radius en fonction de la largeur de l'écran */
 }
 
 
-@media (min-width: 375px){
+
+@media (max-width: 768px){
     .modal-content4 {
-        margin: 10%;
-        padding: 0%;
-    }
-}
-
-
-@media (min-width: 576px){
-    .modal-content4 {
-        margin: 10%;
-        padding: 0%;
-    }
-}
-
-
-@media (min-width: 768px){
-    .modal-content4 {
-        margin: 10%;
-        padding: 0%;
+        width: 90vw; /* Largeur augmentée pour occuper presque toute la fenêtre */
+        max-height: 80vh; /* Hauteur réduite pour mieux s'adapter aux petits écrans */
+        padding: 4vh 4vw; /* Plus de padding pour donner de l'espace sur les petits écrans */
+        border-radius: 5vw; /* Des coins plus arrondis pour les petits écrans */
     }
 }
 .about-text {
-    
-    font-size: 25px;
+    font-size: 4vw; /* Correspond à environ 25px sur un écran large */
     font-weight: 600;
     font-family: var(--font-stack);
-    margin-top: 20px;
-    margin-bottom: 70px;
-    text-align: center;
-    line-height: 0.5;
-   
-    letter-spacing: 0.02;
-    color: #CEA4A0;
-
-}
-
-@media (min-width: 280px){
-    .about-text{
-    font-size: 25px;
-    font-weight: 600;
-    font-family: var(--font-stack);
-    margin-top: 20px;
-    margin-bottom: 10%;
+    margin-left: 2vh;
+    margin-top: 2vh; /* Ajusté pour une meilleure adaptation en fonction de la hauteur de l'écran */
+    margin-bottom: 2vh; /* Marges ajustées pour être basées sur la hauteur de la fenêtre */
     text-align: left;
-    line-height: 1.1;
-    margin-left: 20px;
-   
-    letter-spacing: 0.02;
+    line-height: 1.2; /* Ajusté pour une meilleure lisibilité */
+    letter-spacing: 0.1vw; /* Ajusté en fonction de la largeur de l'écran */
     color: #CEA4A0;
+}
+@media (max-width: 768px) {
+    .about-text {
+        font-size: 5vw; /* Texte plus grand sur les petits écrans pour une meilleure lisibilité */
+        margin-top: 2vh; /* Augmentation de l'espace supérieur pour un meilleur espacement */
+        margin-bottom: 2vh; /* Espace inférieur augmenté pour une meilleure séparation */
+        line-height: 1.4; /* Hauteur de ligne augmentée pour un meilleur espacement du texte */
+        letter-spacing: 0.2vw; /* Espacement entre les lettres légèrement augmenté pour une meilleure lisibilité */
     }
 }
 
 
-@media (min-width: 375px){
-    .about-text{
-    font-size: 25px;
-    font-weight: 600;
-    font-family: var(--font-stack);
-    margin-top: 20px;
-    margin-bottom: 10%;
-    text-align: left;
-    line-height:1.1;
-   
-    letter-spacing: 0.02;
-    color: #CEA4A0;
-    }
-}
-
-@media (min-width: 576px){
-    .about-text{
-    font-size: 25px;
-    font-weight: 600;
-    font-family: var(--font-stack);
-    margin-top: 2%;
-    margin-bottom: 10%;
-    text-align: left;
-    line-height: 0.5;
-   
-    letter-spacing: 0.02;
-    color: #CEA4A0;
-    }
-}
-
-
-@media (min-width: 768px){
-    .about-text{
-    font-size: 28px;
-    font-weight: 600;
-    font-family: var(--font-stack);
-    margin-top: 15px;
-    margin-bottom: 15px;
-    text-align: left;
-    line-height: 1.1;
-   
-    letter-spacing: 0.02;
-    color: #CEA4A0;
-    }
-}
 .about-sub {
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 3vw; /* Environ équivalent à 20px sur un écran large */
+    font-weight: 400;
     font-family: var(--font-stack);
     text-align: left;
-    margin-top: 20px;
-    letter-spacing: 0.5;
-    line-height: 1;
-    color: #c9c8c3
-
+    margin-top: 2vh; /* Ajusté en fonction de la hauteur de la fenêtre */
+    margin-left: 2vh;
+    margin-right: 2vh;
+    letter-spacing: 0.03vw; /* Ajusté en fonction de la largeur de la fenêtre */
+    line-height: 1.2; /* Légèrement augmenté pour la lisibilité */
+    color: white;
 }
-@media (min-width: 280px){
-    .about-sub{
-        font-size: 20px;
-        font-weight: 600;
-        font-family: var(--font-stack);
-        text-align: left;
-        margin-top: 0%;
-        margin-left: 20px;
-        letter-spacing: -0.01em;
-        line-height: 1.05;
-        color: #c9c8c3;
+@media (max-width: 768px) {
+    .about-sub {
+        font-size: 4vw; /* Taille plus grande sur les petits écrans pour la lisibilité */
+        margin-top: 2vh; /* Augmentation de l'espace supérieur pour une meilleure respiration */
+        letter-spacing: 0.05vw; /* Espacement légèrement augmenté pour améliorer la lisibilité */
+        line-height: 1.4; /* Augmenté pour rendre le texte plus espacé sur les petits écrans */
+        color: #fff;
     }
 }
 
 
-@media (min-width: 375px){
-    .about-sub{
-        font-size: 20px;
-        font-weight: 600;
-        font-family: var(--font-stack);
-        text-align: left;
-        margin-top: 0%;
-        letter-spacing: 0.011em;
-        line-height: 1.1;
-        color: #c9c8c3;
-    }
-}
-@media (min-width: 576px){
-    .about-sub{
-        font-size: 20px;
-        font-weight: 600;
-        font-family: var(--font-stack);
-        text-align: left;
-        margin-top: 0%;
-        letter-spacing: 0.011em;
-        line-height: 1.1;
-        color: #c9c8c3;
-    }
-}
 
-
-@media (min-width: 768px){
-    .about-sub{
-        font-size: 25px;
-        font-weight: 600;
-        font-family: var(--font-stack);
-        text-align: left;
-        margin-top: 0%;
-        letter-spacing: 0.011em;
-        line-height: 1.1;
-        color: #c9c8c3;
-    }
-}
 .autre-text {
     font-size: 300px;
     font-weight: 600;
@@ -1870,74 +1442,30 @@ body {
     }
 }
 .autre-sub {
-    font-size: 30px;
+    font-size: 3vw; /* Correspond à environ 30px sur un écran large */
     font-weight: 200;
     font-family: var(--font-stack);
     font-style: italic;
     text-align: left;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 10px;
-    letter-spacing: 0.15em;
-    line-height: 1.4;
-    color: #c9c8c3;
-    font-size: 70px;
-    
+    margin-left: 1.5vw; /* Ajusté en fonction de la largeur de l'écran */
+    margin-right: 1.5vw; /* Ajusté en fonction de la largeur de l'écran */
+    margin-top: 1vh; /* Ajusté en fonction de la hauteur de la fenêtre */
+    letter-spacing: 0.1vw; /* Ajusté pour garder un bon espacement entre les lettres */
+    line-height: 1.8; /* Garde la même hauteur de ligne */
+    color: white;
 }
 
-@media (min-width: 280px){
-    .autre-sub{
-        font-size: 17px;
-        font-weight: 400;
-        font-family: var(--font-stack);
-        text-align: left;
-        margin-top: 0%;
-        letter-spacing: 0.0em;
-        line-height: 1.2;
-        color: #c9c8c3;
+@media (max-width: 768px) {
+    .autre-sub {
+        font-size: 4vw; /* Texte plus grand sur les petits écrans pour une meilleure lisibilité */
+        margin-left: 3vw; /* Ajusté pour des marges plus larges sur de petits écrans */
+        margin-right: 3vw; /* Ajusté pour des marges plus larges sur de petits écrans */
+        margin-top: 2vh; /* Plus d'espace au-dessus pour donner de l'air au texte */
+        letter-spacing: 0.02vw; /* Espacement légèrement augmenté pour de meilleures proportions */
+        line-height: 1.5; /* Hauteur de ligne augmentée pour améliorer la lisibilité */
     }
 }
 
-
-@media (min-width: 375px){
-    .autre-sub{
-        font-size: 20px;
-        font-weight: 600;
-        font-family: var(--font-stack);
-        text-align: left;
-        margin-top: 0%;
-        letter-spacing: 0.02em;
-        line-height: 1.2;
-        color: #c9c8c3;
-    }
-}
-
-@media (min-width: 576px){
-    .autre-sub{
-        font-size: 20px;
-        font-weight: 600;
-        font-family: var(--font-stack);
-        text-align: left;
-        margin-top: 0%;
-        letter-spacing: 0.02em;
-        line-height: 1.2;
-        color: #c9c8c3;
-    }
-}
-
-
-@media (min-width: 768px){
-    .autre-sub{
-        font-size: 20px;
-        font-weight: 600;
-        font-family: var(--font-stack);
-        text-align: left;
-        margin-top: 0%;
-        letter-spacing: 0.02em;
-        line-height: 1.2;
-        color: #c9c8c3;
-    }
-}
 .photo2{
     width: 100%;
     height: auto;
@@ -1959,10 +1487,10 @@ body {
 /* The Contact form */
 
 .contact-form {
-    max-width: 500px;
+    max-width: 40vw; /* Correspond à 500px sur un écran large */
     margin: 0 auto;
-    margin-bottom: 20px;
-    padding: 20px;
+    margin-bottom: 2vh; /* Ajusté pour une hauteur relative */
+    padding: 2vh 2vw; /* Ajusté pour une meilleure adaptabilité */
     vertical-align: middle;
 }
 
@@ -1972,107 +1500,65 @@ body {
 }
 
 .contact-form label {
-    margin-top: 10px;
-
+    margin-top: 1vh; /* Ajusté pour un espacement vertical plus fluide */
 }
 
 .contact-form input[type="text"],
 .contact-form input[type="email"],
 .contact-form textarea {
     width: 100%;
-    padding: 10px;
-
-    margin-top: 5px;
+    padding: 1.5vh 2vw; /* Ajusté pour la largeur et la hauteur du padding */
+    margin-top: 1vh; /* Marges adaptées pour un espacement fluide */
 }
 
 .contact-form button {
-    margin-top: 20px;
-    margin-left: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    margin-top: 2vh;
+    margin-left: 1.5vw;
+    padding-top: 1.5vh;
+    padding-bottom: 1.5vh;
     align-items: center;
     width: 100%;
     
     background-color: #CEA4A0;
     color: white;
-    font-size: 18px;
+    font-size: 1.5vw; /* Correspond à 18px sur les grands écrans */
     font-weight: 600;
     border: none;
     border-radius: var(--hlts-glry-radius);
     cursor: pointer;
 }
 
-@media (min-width: 280px){
-    .contact-form {
-        max-width: 280px;
-    margin: 0;
-    padding: 0px;
-    vertical-align: middle;
-    }
-}
-
-@media (min-width: 280px){
-    .contact-form label{
-     
-   font-size: 15px;
-    }
-}
-
-
-@media (min-width: 375px){
-    .contact-form {
-        max-width: 370px;
-    margin: 0 auto;
-    padding: 0px;
-    vertical-align: middle;
-    }
-}
-
-@media (min-width: 375px){
-    .contact-form label{
-     
-   font-size: 15px;
-    }
-}
-@media (min-width: 576px){
-    .contact-form {
-        max-width: 570px;
-    margin: 0 auto;
-    padding: 0px;
-    vertical-align: middle;
-    }
-}
-
-@media (min-width: 576px){
-    .contact-form label{
-     
-   font-size: 15px;
-    }
-}
-
-
-@media (min-width:768px){
-    .contact-form {
-        max-width: 760px;
-    margin: 0 auto;
-    padding: 0px;
-    vertical-align: middle;
-    }
-}
-
-@media (min-width: 768px){
-    .contact-form label{
-     
-   font-size: 20px;
-    }
-}
 .contact-form button:hover {
     background-color: #333333;
 
 }
-.contact-form {
-    width: 100%;
+@media (max-width: 768px) {
+    .contact-form {
+        max-width: 80vw; /* Utilisation de presque toute la largeur de l'écran */
+        padding: 4vw 0.1vw; /* Padding augmenté pour améliorer le confort de lecture */
+    }
+
+    .contact-form label {
+        margin-top: 1vh; /* Marges verticales légèrement augmentées */
+    }
+
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+        padding: 2vh 2vw; /* Plus d'espace dans les champs pour une meilleure expérience utilisateur */
+        margin-top: 2vh; /* Espacement entre les champs légèrement augmenté */
+        margin-right: 2vh;
+    }
+
+    .contact-form button {
+        margin-top: 3vh;
+        margin-left: 0;
+        padding-top: 2vh;
+        padding-bottom: 2vh;
+        font-size: 4vw; /* Texte du bouton plus grand pour les petits écrans */
+    }
 }
+
 
 .row2 {
     display: flex;
