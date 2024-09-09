@@ -559,6 +559,41 @@ a {
     color: #54524f;
 }
 
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #00000045;
+    min-width: 200px;
+    box-shadow: 0 8px 16px #101010(0, 0, 0, 0.3);
+    z-index: 1;
+    border-radius: 5px;
+    padding: 0;
+    list-style: none; /* Enlève les puces */
+    margin: 0; /* Retirer les marges par défaut */
+}
+
+/* Style pour les éléments du sous-menu */
+.dropdown-item {
+    padding: 5px 5px;
+    color: #fff;
+    text-decoration: none;
+    display: block;
+}
+
+/* Changer la couleur au survol */
+.dropdown-item:hover {
+    background-color: #cea4a09d;
+}
+
+/* Afficher le sous-menu au survol */
+.nav-item:hover .dropdown-menu {
+    display: block;
+    font-weight: 300;
+    font-size: 1.5vw;
+
+}
+
+
 /* Navbar brand and logo adjustments */
 .navbar-logo {
     width: 25vw;
@@ -568,6 +603,9 @@ a {
     .navbar-logo {  
         height: auto;
         width: 35vw; /* Ajusté pour être responsive */
+    }
+    .nav-item:hover .dropdown-menu {
+        font-size: 3vw;
     }
 }
 .navbar-brand {
@@ -1665,4 +1703,90 @@ body {
 
     }
 }
+/* Style de la galerie */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25vw, 1fr)); /* Grille adaptative avec une largeur minimale de 25vw */
+    gap: 2vw; /* Espace entre les images basé sur la largeur de l'écran */
+    padding: 2vw; /* Espace autour de la galerie */
+}
 
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.5vw; /* Coins arrondis basés sur la largeur de l'écran */
+}
+
+.gallery-item img {
+    width: 100%; /* L'image occupe toute la largeur du conteneur */
+    height: auto; /* La hauteur s'ajuste en fonction de la largeur */
+    display: block;
+    object-fit: cover; /* Garde les proportions de l'image tout en couvrant le conteneur */
+    transition: transform 0.3s ease-in-out;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05); /* Zoom léger au survol */
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Fond noir transparent */
+    color: white;
+    text-align: center;
+    padding: 1.5vw; /* Ajuste le padding en fonction de la largeur de l'écran */
+    opacity: 0;
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1; /* Affiche l'overlay au survol */
+}
+
+.overlay h3 {
+    margin: 0;
+    font-size: 2vw; /* Taille du texte basée sur la largeur de l'écran */
+    font-weight: 500;
+    color: #CEA4A0;
+}
+
+.description {
+    margin: 0;
+    font-size: 1.5vw; /* Taille du sous-texte basée sur la largeur de l'écran */
+    font-weight: 200;
+    color: white;
+    font-style: italic;
+}
+
+
+/* Media query pour les petits écrans */
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(45vw, 1fr)); /* La largeur des colonnes est ajustée pour les petits écrans */
+        gap: 3vh; /* Espace plus important entre les images sur mobile */
+        padding: 4vw; /* Espace plus grand autour de la galerie sur mobile */
+    }
+
+    .gallery-item {
+        border-radius: 3vw; /* Augmente le radius pour un effet plus arrondi sur mobile */
+    }
+
+    .overlay h3 {
+        font-size: 4vw; /* Taille du texte plus grande pour la lisibilité sur mobile */
+
+    }
+
+    .overlay p {
+        font-size: 3vw; /* Taille du sous-texte adaptée pour mobile */
+        
+    }
+
+    .gallery-item img {
+        height: 35vh; /* Limite la hauteur des images pour les petits écrans */
+    }
+    .description {
+        font-size: 3vw;
+    }
+}
