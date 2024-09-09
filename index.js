@@ -80,49 +80,42 @@ window.onclick = function(event) {
 }
 
 
-// Wait for the DOM to be fully loaded
+// Attendre que le DOM soit chargé
 document.addEventListener('DOMContentLoaded', function() {
-    // Get the About Me modal
+    // Sélectionner le modal et les boutons de fermeture
     var aboutMeModal = document.getElementById('AboutMeModal');
+    var closeButtons = document.getElementsByClassName('closeAboutMe');
 
-    // Get the button that opens the modal
-    var aboutMeBtn = document.getElementById('AboutMeBtn');
-
-    // Set the modal title
-    var aboutMeModalTitle = document.getElementById('AboutMeModalTitle');
-    if (aboutMeModalTitle) {
-        aboutMeModalTitle.textContent = "About Me";
-    }
-
-    // Function to open the modal
+    // Fonction pour ouvrir le modal
     function openAboutMeModal() {
         aboutMeModal.style.display = 'block';
-        document.body.style.overflow = 'hidden'; // Prevent scrolling on the body
+        document.body.style.overflow = 'hidden'; // Empêcher le défilement du corps
     }
 
-    // Function to close the modal
+    // Fonction pour fermer le modal
     function closeAboutMeModal() {
         aboutMeModal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Re-enable scrolling on the body
+        document.body.style.overflow = 'auto'; // Réactiver le défilement du corps
     }
 
-    // Set the button to open the modal
-    aboutMeBtn.onclick = openAboutMeModal;
+    // Vérifier si l'URL contient le paramètre "modal=aboutme"
+    var urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('modal') === 'aboutme') {
+        openAboutMeModal(); // Ouvrir automatiquement le modal
+    }
 
-    // Get all elements with the class 'closeAboutMe' and add a click event listener to each one
-    var closeButtons = document.getElementsByClassName('closeAboutMe');
+    // Ajouter les événements pour fermer le modal
     for (var i = 0; i < closeButtons.length; i++) {
         closeButtons[i].addEventListener('click', closeAboutMeModal);
     }
 
-    // Close the modal if the user clicks outside of it
+    // Fermer le modal si l'utilisateur clique à l'extérieur
     window.onclick = function(event) {
-        if (event.target == aboutMeModal) {
+        if (event.target === aboutMeModal) {
             closeAboutMeModal();
         }
     }
 });
-
 
 // AboutMe Modal
 
