@@ -1,6 +1,5 @@
 
 
-
 // carousel
 
 let slideIndex = 0;
