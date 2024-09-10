@@ -82,10 +82,8 @@ window.onclick = function(event) {
 
 // Attendre que le DOM soit chargé
 document.addEventListener('DOMContentLoaded', function() {
-    // Sélectionner le modal et les boutons de fermeture
+    // Sélectionner le modal "About Me"
     var aboutMeModal = document.getElementById('AboutMeModal');
-    var aboutMeBtn = document.getElementById('AboutMeBtn');
-    var closeButtons = document.getElementsByClassName('closeAboutMe');
 
     // Fonction pour ouvrir le modal
     function openAboutMeModal() {
@@ -100,11 +98,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Vérifier si l'URL contient le paramètre "modal=aboutme"
-    if (aboutMeBtn) {
-        aboutMeBtn.addEventListener('click', openAboutMeModal);
+    var urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('modal') === 'aboutme') {
+        openAboutMeModal(); // Ouvrir automatiquement la modale "About Me"
     }
 
     // Ajouter les événements pour fermer le modal
+    var closeButtons = document.getElementsByClassName('closeAboutMe');
     for (var i = 0; i < closeButtons.length; i++) {
         closeButtons[i].addEventListener('click', closeAboutMeModal);
     }
@@ -114,13 +114,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (event.target === aboutMeModal) {
             closeAboutMeModal();
         }
-        // Vérifier si l'URL contient le paramètre "modal=aboutme"
-    var urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('modal') === 'aboutme') {
-        openAboutMeModal(); // Ouvrir automatiquement le modal
-    }
     }
 });
+
 
 // AboutMe Modal
 
@@ -135,20 +131,7 @@ document.getElementById('contactForm').addEventListener('submit', function(event
 
 
 
-    // AboutMe link
-
-document.addEventListener('DOMContentLoaded', function() {
-    var aboutModal = document.getElementById('AboutMeModal');
-    var aboutModalLink = document.getElementById('AboutMeModalLink');
-
-    aboutModalLink.addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent the default anchor behavior
-        aboutModal.style.display = 'block'; // Display the modal
-    });
-
-    // Add your existing modal close logic here
-});
-
+ 
 
 // Variables pour gérer le zoom et le défilement
 let zooming = false; // Pour savoir si le zoom est en cours
