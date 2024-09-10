@@ -82,8 +82,9 @@ window.onclick = function(event) {
 
 // Attendre que le DOM soit chargé
 document.addEventListener('DOMContentLoaded', function() {
-    // Sélectionner le modal "About Me"
+    // Sélectionner le modal et les boutons de fermeture
     var aboutMeModal = document.getElementById('AboutMeModal');
+    var closeButtons = document.getElementsByClassName('closeAboutMe');
 
     // Fonction pour ouvrir le modal
     function openAboutMeModal() {
@@ -97,14 +98,19 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = 'auto'; // Réactiver le défilement du corps
     }
 
-    // Vérifier si l'URL contient le paramètre "modal=aboutme"
+    // Ouvrir le modal quand on clique sur le bouton
+    var aboutMeBtn = document.getElementById('AboutMeBtn');
+    aboutMeBtn.addEventListener('click', function() {
+        openAboutMeModal();
+    });
+
+    // Ouvrir le modal depuis la navigation (quand l'URL contient "?modal=aboutme")
     var urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('modal') === 'aboutme') {
-        openAboutMeModal(); // Ouvrir automatiquement la modale "About Me"
+        openAboutMeModal(); // Ouvrir automatiquement le modal si l'URL contient le bon paramètre
     }
 
     // Ajouter les événements pour fermer le modal
-    var closeButtons = document.getElementsByClassName('closeAboutMe');
     for (var i = 0; i < closeButtons.length; i++) {
         closeButtons[i].addEventListener('click', closeAboutMeModal);
     }
