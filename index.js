@@ -84,6 +84,7 @@ window.onclick = function(event) {
 document.addEventListener('DOMContentLoaded', function() {
     // Sélectionner le modal et les boutons de fermeture
     var aboutMeModal = document.getElementById('AboutMeModal');
+    var aboutMeBtn = document.getElementById('AboutMeBtn');
     var closeButtons = document.getElementsByClassName('closeAboutMe');
 
     // Fonction pour ouvrir le modal
@@ -99,9 +100,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Vérifier si l'URL contient le paramètre "modal=aboutme"
-    var urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('modal') === 'aboutme') {
-        openAboutMeModal(); // Ouvrir automatiquement le modal
+    if (aboutMeBtn) {
+        aboutMeBtn.addEventListener('click', openAboutMeModal);
     }
 
     // Ajouter les événements pour fermer le modal
@@ -114,6 +114,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (event.target === aboutMeModal) {
             closeAboutMeModal();
         }
+        // Vérifier si l'URL contient le paramètre "modal=aboutme"
+    var urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('modal') === 'aboutme') {
+        openAboutMeModal(); // Ouvrir automatiquement le modal
+    }
     }
 });
 
