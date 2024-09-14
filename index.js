@@ -1,5 +1,6 @@
 
 
+
 // carousel
 
 let slideIndex = 0;
@@ -37,7 +38,7 @@ function showSlides() {
 
 
 // Get the modal
-var modal = document.getElementById('myModal');
+var modal2 = document.getElementById('myModal');
 
 // Get the button that opens and closes the modal
 var btn = document.getElementById('myBtn');
@@ -49,7 +50,7 @@ var span = document.getElementsByClassName('close')[0];
 
 // Function to open the modal and change the button text
 var openModal = function() {
-    modal.style.display = 'block';
+    modal2.style.display = 'block';
     document.body.style.overflow = 'hidden'; // Prevent scrolling on the body
     btn.textContent = 'Close'; // Change button text to "Close Modal"
     btn.onclick = closeModal; // Change the onclick event to the close function
@@ -57,7 +58,7 @@ var openModal = function() {
 
 // Function to close the modal and change the button text
 var closeModal = function() {
-    modal.style.display = 'none';
+    modal2.style.display = 'none';
     document.body.style.overflow = 'auto'; // Re-enable scrolling on the body
     btn.textContent = 'My work at a glance'; // Change button text to "Open Modal"
     btn.onclick = openModal; // Change the onclick event to the open function
@@ -66,9 +67,11 @@ var closeModal = function() {
 // Initially set the button to open the modal
 btn.onclick = openModal;
 
-// If you have a <span> element to close the modal, wire up its click event
+// If the <span> element exists, add an event listener to close the modal
 if (span) {
-    span.onclick = closeModal;
+    span.onclick = function() {
+        closeModal(); // Close the modal when the <span> (X) is clicked
+    };
 }
 
 // Close the modal if the user clicks outside of it
@@ -186,6 +189,7 @@ const observer = new IntersectionObserver((entries) => {
 // Ciblez l'image pour l'observation
 const img = document.querySelector('.img-fluid');
 observer.observe(img);
+
 
 
 
