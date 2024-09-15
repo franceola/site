@@ -1205,7 +1205,7 @@ body {
     cursor: pointer;
     border-radius: 50%; /* Rounded close button */
     padding: 5px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Add a slight shadow */
+   
 }
 
 .close:hover,
@@ -1235,7 +1235,7 @@ body {
     border: none; /* Sans bordure */
     border-radius: 3vh; /* Coins légèrement plus arrondis */
     cursor: pointer; /* Curseur pointeur */
-    z-index: 3; /* S'assurer qu'il est au-dessus */
+    z-index: 5; /* S'assurer qu'il est au-dessus */
 }
 
 /* Bouton fixe en position (lorsque le modal est ouvert) */
