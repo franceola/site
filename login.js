@@ -190,6 +190,13 @@ const observer = new IntersectionObserver((entries) => {
 const img = document.querySelector('.img-fluid');
 observer.observe(img);
 
+document.addEventListener('visibilitychange', function() {
+  if (document.visibilityState === 'hidden') {
+    document.body.style.filter = 'blur(10px)';
+  } else {
+    document.body.style.filter = 'none';
+  }
+});
 
 
 
