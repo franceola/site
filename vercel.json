@@ -1,7 +1,7 @@
 {
     "headers": [
       {
-        "source": "/images/:image*",  
+        "source": "/:image*",  
         "headers": [
           {
             "key": "Content-Disposition",
