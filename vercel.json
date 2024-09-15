@@ -1,0 +1,14 @@
+{
+    "headers": [
+      {
+        "source": "/images/:image*",  
+        "headers": [
+          {
+            "key": "Content-Disposition",
+            "value": "inline"  
+          }
+        ]
+      }
+    ]
+  }
+  
