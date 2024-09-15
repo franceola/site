@@ -1203,17 +1203,17 @@ body {
     font-weight: bold;
     z-index: 10; /* Make sure it's above the modal content */
     cursor: pointer;
-    border-radius: 50%; /* Rounded close button */
-    padding: 5px;
+    
+   
    
 }
 
 .close:hover,
 .close:focus {
-    color: black;
+    color: #CEA4A0;
     text-decoration: none;
     cursor: pointer;
-    background-color: #ddd;
+
 }
 /* Add styles for the image */
 .modal-image {
