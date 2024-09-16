@@ -348,21 +348,55 @@
             </section>
               <script>
             
-            document.addEventListener('contextmenu', function(e) {
+           // Code existant pour ordinateur
+document.addEventListener('contextmenu', function(e) {
   if (e.target.tagName === 'IMG') {
     e.preventDefault();
     alert("L'enregistrement des images n'est pas autorisé sur ce site.");
   }
 }, false);
 
-        
-            document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function(e) {
   if (e.ctrlKey || e.altKey || e.metaKey) {
     e.preventDefault();
     return false;
-    
   }
 });
+
+// Nouveau code pour mobile
+let touchStartTime;
+let touchStartX;
+let touchStartY;
+
+document.addEventListener('touchstart', function(e) {
+  touchStartTime = new Date().getTime();
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+}, false);
+
+document.addEventListener('touchend', function(e) {
+  const touchEndTime = new Date().getTime();
+  const touchEndX = e.changedTouches[0].clientX;
+  const touchEndY = e.changedTouches[0].clientY;
+  
+  const touchDuration = touchEndTime - touchStartTime;
+  const touchDistance = Math.sqrt(Math.pow(touchEndX - touchStartX, 2) + Math.pow(touchEndY - touchStartY, 2));
+
+  // Détecte les pressions longues (plus de 500ms) et les petits mouvements (moins de 10px)
+  if (touchDuration > 500 && touchDistance < 10) {
+    if (e.target.tagName === 'IMG') {
+      e.preventDefault();
+      alert("L'enregistrement des images n'est pas autorisé sur ce site.");
+    }
+  }
+}, false);
+
+// Empêcher le zoom par pincement
+document.addEventListener('touchmove', function(e) {
+  if (e.touches.length > 1) {
+    e.preventDefault();
+  }
+}, { passive: false });
       
           </script>
  <script src="login.js"></script>
