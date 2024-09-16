@@ -346,8 +346,10 @@
                 </div>
                 
             </section>
-          <script>
+             <script>
             
+           
+
             document.addEventListener('contextmenu', function(e) {
   if (e.target.tagName === 'IMG') {
     e.preventDefault();
@@ -355,15 +357,21 @@
   }
 }, false);
 
-        
-            document.addEventListener('keydown', function(e) {
-  if (e.ctrlKey || e.altKey || e.metaKey) {
+document.addEventListener('dragstart', function(e) {
+  if (e.target.tagName === 'IMG') {
+    e.preventDefault();
+  }
+}, false);
+
+document.addEventListener('keydown', function(e) {
+  // Empêche les combinaisons de touches courantes pour les captures d'écran
+  if ((e.ctrlKey || e.metaKey) && (e.key === 'p' || e.key === 's' || e.key === 'c' || e.key === 'u')) {
     e.preventDefault();
     return false;
-    
   }
-});
-               // Pour les appareils tactiles
+}, false);
+
+// Pour les appareils tactiles
 document.addEventListener('touchstart', function(e) {
   if (e.touches.length > 1) {
     e.preventDefault();
@@ -377,7 +385,6 @@ document.addEventListener('touchend', function(e) {
   }
   lastTap = now;
 }, false);
-      
           </script>
             <script src="login.js"></script>
     </body>
