@@ -363,41 +363,44 @@ document.addEventListener('keydown', function(e) {
   }
 });
 
-// Nouveau code pour mobile
-let touchStartTime;
-let touchStartX;
-let touchStartY;
+// Code amélioré pour mobile
+let touchTimer;
+let touchTarget;
 
-document.addEventListener('touchstart', function(e) {
-  touchStartTime = new Date().getTime();
-  touchStartX = e.touches[0].clientX;
-  touchStartY = e.touches[0].clientY;
-}, false);
-
-document.addEventListener('touchend', function(e) {
-  const touchEndTime = new Date().getTime();
-  const touchEndX = e.changedTouches[0].clientX;
-  const touchEndY = e.changedTouches[0].clientY;
+function handleTouchStart(e) {
+  if (e.touches.length > 1) {
+    e.preventDefault(); // Empêcher le zoom par pincement
+    return;
+  }
   
-  const touchDuration = touchEndTime - touchStartTime;
-  const touchDistance = Math.sqrt(Math.pow(touchEndX - touchStartX, 2) + Math.pow(touchEndY - touchStartY, 2));
-
-  // Détecte les pressions longues (plus de 500ms) et les petits mouvements (moins de 10px)
-  if (touchDuration > 500 && touchDistance < 10) {
-    if (e.target.tagName === 'IMG') {
-      e.preventDefault();
+  touchTarget = e.target;
+  touchTimer = setTimeout(function() {
+    if (touchTarget.tagName === 'IMG') {
       alert("L'enregistrement des images n'est pas autorisé sur ce site.");
     }
-  }
-}, false);
+  }, 500);
+}
 
-// Empêcher le zoom par pincement
-document.addEventListener('touchmove', function(e) {
+function handleTouchEnd(e) {
+  clearTimeout(touchTimer);
+}
+
+function handleTouchMove(e) {
+  clearTimeout(touchTimer);
   if (e.touches.length > 1) {
-    e.preventDefault();
+    e.preventDefault(); // Empêcher le zoom par pincement
   }
+}
+
+// Ajouter les écouteurs d'événements
+document.addEventListener('touchstart', handleTouchStart, { passive: false });
+document.addEventListener('touchend', handleTouchEnd);
+document.addEventListener('touchmove', handleTouchMove, { passive: false });
+
+// Empêcher l'ouverture du menu contextuel sur mobile
+document.addEventListener('touchstart', function(e) {
+  e.preventDefault();
 }, { passive: false });
-      
           </script>
  <script src="login.js"></script>
     </body>
