@@ -391,44 +391,24 @@ function touchEndHandler(e) {
     reapplyProtection();
 }
 
-function contextMenuHandler(e) {
-    e.preventDefault();
-}
-
-function keydownHandler(e) {
-    if ((e.ctrlKey || e.metaKey) && (e.key === 'p' || e.key === 's' || e.key === 'c' || e.key === 'u')) {
-        e.preventDefault();
-        return false;
-    }
-}
-
-function dragStartHandler(e) {
-    if (e.target.tagName === 'IMG') {
-        e.preventDefault();
-    }
-}
 
 function reapplyProtection() {
     // Supprimer tous les écouteurs existants
     document.removeEventListener('touchstart', touchStartHandler, true);
     document.removeEventListener('touchend', touchEndHandler, true);
-    document.removeEventListener('contextmenu', contextMenuHandler, true);
-    document.removeEventListener('keydown', keydownHandler, true);
-    document.removeEventListener('dragstart', dragStartHandler, true);
+    
 
     // Réappliquer tous les écouteurs
     document.addEventListener('touchstart', touchStartHandler, true);
     document.addEventListener('touchend', touchEndHandler, true);
-    document.addEventListener('contextmenu', contextMenuHandler, true);
-    document.addEventListener('keydown', keydownHandler, true);
-    document.addEventListener('dragstart', dragStartHandler, true);
+    
 }
 
 // Appliquer la protection initiale
 reapplyProtection();
 
 // Réappliquer la protection périodiquement
-setInterval(reapplyProtection, 1000); // Réapplique toutes les secondes
+setInterval(reapplyProtection, 5000); // Réapplique toutes les secondes
 </script>
  <script src="login.js"></script>
     </body>
