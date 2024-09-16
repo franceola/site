@@ -347,8 +347,6 @@
                 
             </section>
              <script>
-            
-           
 
             document.addEventListener('contextmenu', function(e) {
   if (e.target.tagName === 'IMG') {
@@ -372,20 +370,29 @@ document.addEventListener('keydown', function(e) {
 }, false);
 
 // Pour les appareils tactiles
-document.addEventListener('touchstart', function(e) {
-  if (e.touches.length > 1) {
+let touchStartTime;
+
+document.addEventListener('touchstart', (e) => {
+  touchStartTime = new Date().getTime();
+});
+
+document.addEventListener('touchend', (e) => {
+  const touchEndTime = new Date().getTime();
+  const touchDuration = touchEndTime - touchStartTime;
+  
+  if (touchDuration > 500) { // 500ms est un exemple, ajustez selon vos besoins
     e.preventDefault();
+    // Votre code pour gérer la pression longue ici
   }
 }, false);
 
-document.addEventListener('touchend', function(e) {
-  var now = new Date().getTime();
-  if ((now - lastTap) < 300) {
+document.addEventListener('touchstart', (e) => {
+  if (e.touches.length > 1) {
     e.preventDefault();
+    // Votre code pour gérer les touches multiples ici
   }
-  lastTap = now;
-}, false);
-          </script>
-            <script src="login.js"></script>
+});
+</script>
+ <script src="login.js"></script>
     </body>
 </html>
