@@ -369,51 +369,66 @@ document.addEventListener('keydown', function(e) {
   }
 }, false);
 
-// Pour les appareils tactiles
+// Pour les appareils tactileslet touchStartTime;
 let touchStartTime;
-
-document.addEventListener('touchstart', (e) => {
-  touchStartTime = new Date().getTime();
-});
-
-document.addEventListener('touchend', (e) => {
-  const touchEndTime = new Date().getTime();
-  const touchDuration = touchEndTime - touchStartTime;
-  
-  if (touchDuration > 500) { // 500ms est un exemple, ajustez selon vos besoins
-    e.preventDefault();
-    // Votre code pour gérer la pression longue ici
-  }
-}, false);
-
-document.addEventListener('touchstart', (e) => {
-  if (e.touches.length > 1) {
-    e.preventDefault();
-    // Votre code pour gérer les touches multiples ici
-  }
-});
-
-// Appliquez la protection initialement
-applyProtection();
-
-// Bloquer le menu contextuel (clic droit)
-function contextMenuHandler(e) {
-    e.preventDefault(); // Bloquer le clic droit
+                  
+function touchStartHandler(e) {
+    touchStartTime = new Date().getTime();
+    if (e.touches.length > 1) {
+        e.preventDefault();
+    }
 }
 
-// Ajouter les écouteurs d'événements pour que les fonctions soient appliquées en permanence
-document.addEventListener('touchstart', function(e) {
-    touchStartTime = new Date().getTime(); // Enregistrer le temps de départ du touch
-    touchStartHandler(e); // Appeler la fonction pour gérer le touchstart
-}, { passive: false });
+function touchEndHandler(e) {
+    const touchEndTime = new Date().getTime();
+    const touchDuration = touchEndTime - touchStartTime;
+    
+    if (touchDuration > 500) {
+        e.preventDefault();
+    }
+    
+    // Réappliquer la protection après chaque interaction
+    reapplyProtection();
+}
 
-document.addEventListener('touchend', function(e) {
-    touchEndHandler(e); // Appeler la fonction pour gérer le touchend
-}, { passive: false });
+function contextMenuHandler(e) {
+    e.preventDefault();
+}
 
-document.addEventListener('contextmenu', function(e) {
-    contextMenuHandler(e); // Appeler la fonction pour gérer le clic droit
-});
+function keydownHandler(e) {
+    if ((e.ctrlKey || e.metaKey) && (e.key === 'p' || e.key === 's' || e.key === 'c' || e.key === 'u')) {
+        e.preventDefault();
+        return false;
+    }
+}
+
+function dragStartHandler(e) {
+    if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+    }
+}
+
+function reapplyProtection() {
+    // Supprimer tous les écouteurs existants
+    document.removeEventListener('touchstart', touchStartHandler, true);
+    document.removeEventListener('touchend', touchEndHandler, true);
+    document.removeEventListener('contextmenu', contextMenuHandler, true);
+    document.removeEventListener('keydown', keydownHandler, true);
+    document.removeEventListener('dragstart', dragStartHandler, true);
+
+    // Réappliquer tous les écouteurs
+    document.addEventListener('touchstart', touchStartHandler, true);
+    document.addEventListener('touchend', touchEndHandler, true);
+    document.addEventListener('contextmenu', contextMenuHandler, true);
+    document.addEventListener('keydown', keydownHandler, true);
+    document.addEventListener('dragstart', dragStartHandler, true);
+}
+
+// Appliquer la protection initiale
+reapplyProtection();
+
+// Réappliquer la protection périodiquement
+setInterval(reapplyProtection, 1000); // Réapplique toutes les secondes
 </script>
  <script src="login.js"></script>
     </body>
