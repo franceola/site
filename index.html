@@ -346,20 +346,25 @@
                 </div>
                 
             </section>
-         <script type="text/javascript">
-      document.addEventListener('contextmenu', function(e) {
+          <script>
+            
+            document.addEventListener('contextmenu', function(e) {
   if (e.target.tagName === 'IMG') {
     e.preventDefault();
     alert("L'enregistrement des images n'est pas autorisé sur ce site.");
   }
 }, false);
-              document.addEventListener('keydown', function(e) {
+
+        
+            document.addEventListener('keydown', function(e) {
   if (e.ctrlKey || e.altKey || e.metaKey) {
     e.preventDefault();
     return false;
+    
   }
 });
-  </script>
+      
+          </script>
             <script src="login.js"></script>
     </body>
 </html>
