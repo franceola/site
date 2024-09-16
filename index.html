@@ -383,17 +383,12 @@ function touchEndHandler(e) {
     const touchEndTime = new Date().getTime();
     const touchDuration = touchEndTime - touchStartTime;
     
-    if (touchDuration > 500) {
+    if (touchDuration > Infinity) {
         e.preventDefault();
     }
     
-    // Réappliquer la protection après chaque interaction
-    reapplyProtection();
-}
+   
 
-
-// Réappliquer la protection périodiquement
-setInterval(reapplyProtection, 500); // Réapplique toutes les secondes
 </script>
  <script src="login.js"></script>
     </body>
