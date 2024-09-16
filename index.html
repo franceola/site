@@ -392,15 +392,6 @@ document.addEventListener('touchstart', (e) => {
     // Votre code pour gérer les touches multiples ici
   }
 });
-                  function applyProtection() {
-    document.removeEventListener('touchstart', touchStartHandler);
-    document.removeEventListener('touchend', touchEndHandler);
-    document.removeEventListener('contextmenu', contextMenuHandler);
-
-    document.addEventListener('touchstart', touchStartHandler);
-    document.addEventListener('touchend', touchEndHandler);
-    document.addEventListener('contextmenu', contextMenuHandler);
-}
 
 // Appliquez la protection initialement
 applyProtection();
