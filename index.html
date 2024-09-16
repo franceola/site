@@ -392,21 +392,6 @@ function touchEndHandler(e) {
 }
 
 
-function reapplyProtection() {
-    // Supprimer tous les écouteurs existants
-    document.removeEventListener('touchstart', touchStartHandler, true);
-    document.removeEventListener('touchend', touchEndHandler, true);
-    
-
-    // Réappliquer tous les écouteurs
-    document.addEventListener('touchstart', touchStartHandler, true);
-    document.addEventListener('touchend', touchEndHandler, true);
-    
-}
-
-// Appliquer la protection initiale
-reapplyProtection();
-
 // Réappliquer la protection périodiquement
 setInterval(reapplyProtection, 500); // Réapplique toutes les secondes
 </script>
