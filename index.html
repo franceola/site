@@ -368,6 +368,7 @@ function handleTouchEvents(e) {
 // Fonction pour gérer le menu contextuel
 function handleContextMenu(e) {
     e.preventDefault();
+      
 }
 
 // Fonction pour gérer les événements clavier
@@ -381,6 +382,7 @@ function handleKeyboardEvents(e) {
 function handleDragStart(e) {
     if (e.target.tagName === 'IMG') {
         e.preventDefault();
+         alert("L'enregistrement des images n'est pas autorisé sur ce site.");
     }
 }
 
