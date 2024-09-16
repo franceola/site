@@ -380,7 +380,7 @@ document.addEventListener('touchend', (e) => {
   const touchEndTime = new Date().getTime();
   const touchDuration = touchEndTime - touchStartTime;
   
-  if (touchDuration > 500) { // 500ms est un exemple, ajustez selon vos besoins
+  if (touchDuration > 3000) { // 500ms est un exemple, ajustez selon vos besoins
     e.preventDefault();
     // Votre code pour gérer la pression longue ici
   }
