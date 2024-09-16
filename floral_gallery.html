@@ -84,10 +84,10 @@
             </div>
         </div>
     </section>
-        <script>
+       
             
-           
-
+      <script>
+            
             document.addEventListener('contextmenu', function(e) {
   if (e.target.tagName === 'IMG') {
     e.preventDefault();
@@ -95,16 +95,17 @@
   }
 }, false);
 
-
-document.addEventListener('keydown', function(e) {
-  // Empêche les combinaisons de touches courantes pour les captures d'écran
-  if ((e.ctrlKey || e.altKeye || e.metakey) {
+        
+            document.addEventListener('keydown', function(e) {
+  if (e.ctrlKey || e.altKey || e.metaKey) {
     e.preventDefault();
     return false;
+    
   }
 });
-
-
+      
           </script>
+
+         
 </body>
 </html>
