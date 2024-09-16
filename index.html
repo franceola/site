@@ -363,6 +363,20 @@
     
   }
 });
+               // Pour les appareils tactiles
+document.addEventListener('touchstart', function(e) {
+  if (e.touches.length > 1) {
+    e.preventDefault();
+  }
+}, false);
+
+document.addEventListener('touchend', function(e) {
+  var now = new Date().getTime();
+  if ((now - lastTap) < 300) {
+    e.preventDefault();
+  }
+  lastTap = now;
+}, false);
       
           </script>
             <script src="login.js"></script>
