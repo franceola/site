@@ -347,46 +347,54 @@
                 
             </section>
              <script>
+// Fonction pour gérer tous les événements tactiles
+function handleTouchEvents(e) {
+    // Empêcher les gestes multi-touch
+    if (e.touches && e.touches.length > 1) {
+        e.preventDefault();
+    }
 
-            document.addEventListener('contextmenu', function(e) {
-  if (e.target.tagName === 'IMG') {
+    // Empêcher les pressions longues
+    if (e.type === 'touchstart') {
+        this.touchStartTime = new Date().getTime();
+    } else if (e.type === 'touchend') {
+        const touchDuration = new Date().getTime() - this.touchStartTime;
+        if (touchDuration > 500) {
+            e.preventDefault();
+        }
+    }
+}
+
+// Fonction pour gérer le menu contextuel
+function handleContextMenu(e) {
     e.preventDefault();
-    alert("L'enregistrement des images n'est pas autorisé sur ce site.");
-  }
-}, false);
+}
 
-document.addEventListener('dragstart', function(e) {
-  if (e.target.tagName === 'IMG') {
-    e.preventDefault();
-  }
-}, false);
-
-document.addEventListener('keydown', function(e) {
-  // Empêche les combinaisons de touches courantes pour les captures d'écran
-  if ((e.ctrlKey || e.metaKey) && (e.key === 'p' || e.key === 's' || e.key === 'c' || e.key === 'u')) {
-    e.preventDefault();
-    return false;
-  }
-}, false);
-
-// Pour les appareils tactileslet touchStartTime;
-let touchStartTime;
-                  
-function touchStartHandler(e) {
-    touchStartTime = new Date().getTime();
-    if (e.touches.length > 1) {
+// Fonction pour gérer les événements clavier
+function handleKeyboardEvents(e) {
+    if ((e.ctrlKey || e.metaKey) && (e.key === 'p' || e.key === 's' || e.key === 'c' || e.key === 'u')) {
         e.preventDefault();
     }
 }
 
-function touchEndHandler(e) {
-    const touchEndTime = new Date().getTime();
-    const touchDuration = touchEndTime - touchStartTime;
-    
-    if (touchDuration > Infinity) {
+// Fonction pour gérer le glisser-déposer des images
+function handleDragStart(e) {
+    if (e.target.tagName === 'IMG') {
         e.preventDefault();
     }
-    
+}
+
+// Appliquer les protections une seule fois
+document.addEventListener('touchstart', handleTouchEvents, { passive: false });
+document.addEventListener('touchend', handleTouchEvents, { passive: false });
+document.addEventListener('contextmenu', handleContextMenu);
+document.addEventListener('keydown', handleKeyboardEvents);
+document.addEventListener('dragstart', handleDragStart);
+
+// Désactiver la sélection de texte
+document.body.style.userSelect = 'none';
+document.body.style.webkitUserSelect = 'none';
+document.body.style.msUserSelect = 'none';
    
 
 </script>
