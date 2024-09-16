@@ -350,6 +350,12 @@
     document.addEventListener('contextmenu', function(e) {
       e.preventDefault();
     });
+              document.addEventListener('keydown', function(e) {
+  if (e.ctrlKey || e.altKey || e.metaKey) {
+    e.preventDefault();
+    return false;
+  }
+});
   </script>
             <script src="login.js"></script>
     </body>
