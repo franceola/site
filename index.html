@@ -348,22 +348,20 @@
             </section>
               <script>
             
-           // Code existant pour ordinateur
-document.addEventListener('contextmenu', function(e) {
-  if (e.target.tagName === 'IMG') {
-    e.preventDefault();
-    alert("L'enregistrement des images n'est pas autorisé sur ce site.");
-  }
-}, false);
+    // Fonction pour gérer le défilement
+let isScrollDisabled = false;
 
-document.addEventListener('keydown', function(e) {
-  if (e.ctrlKey || e.altKey || e.metaKey) {
-    e.preventDefault();
-    return false;
-  }
-});
+function disableScroll() {
+  isScrollDisabled = true;
+  document.body.classList.add('no-scroll');
+}
 
-// Code amélioré pour mobile
+function enableScroll() {
+  isScrollDisabled = false;
+  document.body.classList.remove('no-scroll');
+}
+
+// Gestion des événements tactiles
 let touchTimer;
 let touchTarget;
 
@@ -377,12 +375,14 @@ function handleTouchStart(e) {
   touchTimer = setTimeout(function() {
     if (touchTarget.tagName === 'IMG') {
       alert("L'enregistrement des images n'est pas autorisé sur ce site.");
+      disableScroll();
     }
   }, 500);
 }
 
 function handleTouchEnd(e) {
   clearTimeout(touchTimer);
+  enableScroll();
 }
 
 function handleTouchMove(e) {
@@ -390,17 +390,67 @@ function handleTouchMove(e) {
   if (e.touches.length > 1) {
     e.preventDefault(); // Empêcher le zoom par pincement
   }
+  if (!isScrollDisabled) {
+    // Permettre le défilement normal si non désactivé
+    return true;
+  }
 }
 
-// Ajouter les écouteurs d'événements
+// Gestion du menu contextuel et des raccourcis clavier
+function handleContextMenu(e) {
+  if (e.target.tagName === 'IMG') {
+    e.preventDefault();
+    alert("L'enregistrement des images n'est pas autorisé sur ce site.");
+  }
+}
+
+function handleKeyDown(e) {
+  if (e.ctrlKey || e.altKey || e.metaKey) {
+    if (['c', 'x', 'u', 'p', 's'].includes(e.key.toLowerCase())) {
+      e.preventDefault();
+      return false;
+    }
+  }
+}
+
+// Gestion des clics
+function handleClick(e) {
+  if (e.target.tagName === 'A') {
+    // Permettre la navigation pour les liens
+    return true;
+  }
+}
+
+// Ajout des écouteurs d'événements
 document.addEventListener('touchstart', handleTouchStart, { passive: false });
 document.addEventListener('touchend', handleTouchEnd);
 document.addEventListener('touchmove', handleTouchMove, { passive: false });
+document.addEventListener('contextmenu', handleContextMenu);
+document.addEventListener('keydown', handleKeyDown);
+document.addEventListener('click', handleClick);
 
-// Empêcher l'ouverture du menu contextuel sur mobile
-document.addEventListener('touchstart', function(e) {
-  e.preventDefault();
-}, { passive: false });
+// CSS pour désactiver le défilement
+const style = document.createElement('style');
+style.textContent = `
+  .no-scroll {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+`;
+document.head.appendChild(style);
+
+// Désactiver la sélection de texte
+document.body.style.userSelect = 'none';
+document.body.style.webkitUserSelect = 'none';
+document.body.style.msUserSelect = 'none';
+
+// Désactiver le glisser-déposer des images
+document.addEventListener('dragstart', function(e) {
+  if (e.target.tagName === 'IMG') {
+    e.preventDefault();
+  }
+});
           </script>
  <script src="login.js"></script>
     </body>
