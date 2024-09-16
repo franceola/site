@@ -380,7 +380,7 @@ document.addEventListener('touchend', (e) => {
   const touchEndTime = new Date().getTime();
   const touchDuration = touchEndTime - touchStartTime;
   
-  if (touchDuration > 10000) { // 500ms est un exemple, ajustez selon vos besoins
+  if (touchDuration > 500) { // 500ms est un exemple, ajustez selon vos besoins
     e.preventDefault();
     // Votre code pour gérer la pression longue ici
   }
@@ -396,8 +396,24 @@ document.addEventListener('touchstart', (e) => {
 // Appliquez la protection initialement
 applyProtection();
 
-// Réappliquez la protection après chaque interaction tactile
-document.addEventListener('touchend', applyProtection);
+// Bloquer le menu contextuel (clic droit)
+function contextMenuHandler(e) {
+    e.preventDefault(); // Bloquer le clic droit
+}
+
+// Ajouter les écouteurs d'événements pour que les fonctions soient appliquées en permanence
+document.addEventListener('touchstart', function(e) {
+    touchStartTime = new Date().getTime(); // Enregistrer le temps de départ du touch
+    touchStartHandler(e); // Appeler la fonction pour gérer le touchstart
+}, { passive: false });
+
+document.addEventListener('touchend', function(e) {
+    touchEndHandler(e); // Appeler la fonction pour gérer le touchend
+}, { passive: false });
+
+document.addEventListener('contextmenu', function(e) {
+    contextMenuHandler(e); // Appeler la fonction pour gérer le clic droit
+});
 </script>
  <script src="login.js"></script>
     </body>
